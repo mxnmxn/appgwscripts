@@ -1,0 +1,5 @@
+Add-WindowsFeature Web-Server
+$file = Get-Content 'C:\AzureData\CustomData.bin'
+$decoded = [System.Convert]::FromBase64String($file);
+$decodedtext = [System.Text.Encoding]::UTF8.GetString($decoded)
+Add-Content -Path 'C:\inetpub\wwwroot\Default.htm' -Value $decodedtext
